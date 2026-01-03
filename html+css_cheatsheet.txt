@@ -1,0 +1,145 @@
+================================================================================
+                    HTML & CSS BEGINNER CHEATSHEET (LEARNED)
+================================================================================
+
+--- HTML: PAGE STRUCTURE & METADATA ---
+<!DOCTYPE html>        - Tells the browser this is an HTML5 document. 
+<html>                 - The root element that wraps all content on the page. 
+<head>                 - A container for metadata (data about the page) that isn't visible. 
+<meta charset="UTF-8"> - Ensures special characters and symbols display correctly. 
+<meta name="viewport"> - Sets the visible area of the page; essential for mobile responsiveness. 
+<title>                - The text shown on the browser tab or in search results. 
+<link>                 - Connects your HTML to external files, like your CSS stylesheet. 
+<body>                 - Contains all the visible content (text, images, buttons). 
+
+--- HTML: CONTENT HIERARCHY & TEXT ---
+<h1> ... <h6>          - Section headings (h1 is the most important, h6 is the least). 
+<p>                    - Defines a block of text as a paragraph. 
+<strong>               - Makes text bold and indicates it has "strong importance." 
+<b>                    - Makes text bold for visual style without extra importance. 
+<em>                   - Italics that indicate emphasis when reading. 
+<i>                    - Italics for visual style (like technical terms or thoughts). 
+<small>                - For "fine print" like legal disclaimers or copyright text. 
+
+--- HTML: LAYOUT CONTAINERS (SEMANTIC) ---
+<main>                 - Wraps the unique, central content of your webpage. 
+<header>               - The introductory section of a page or a specific area. 
+<section>              - Groups related content together (e.g., an "About Us" section). 
+<footer>               - The bottom section of a page, usually for contact or links. 
+<div>                  - A generic "box" used to group elements for styling (Block-level). 
+<span>                 - A generic container for small bits of text inside a line (Inline). 
+
+--- HTML: LISTS, LINKS & MEDIA ---
+<ul>                   - Creates a bulleted (unordered) list. 
+<ol>                   - Creates a numbered (ordered) list. 
+<li>                   - An individual item inside a <ul> or <ol>. 
+<a>                    - A hyperlink. Use the 'href' attribute to set the destination URL. 
+<img>                  - Displays an image. Needs 'src' (path) and 'alt' (description). 
+
+--- HTML: FORMS & INTERACTION ---
+<form>                 - A container that collects user input to send to a server. 
+<label>                - Provides a clickable text description for an input field. 
+<button>               - A clickable button to submit forms or trigger actions. 
+<select>               - Creates a drop-down selection menu. 
+<option>               - An individual choice inside a <select> drop-down. 
+
+--- HTML: DEFINITION LISTS ---
+<dl>                   - A list of terms and their specific descriptions. 
+<dt>                   - The specific "Term" or name being defined. 
+<dd>                   - The detailed description or definition for the term. 
+
+--------------------------------------------------------------------------------
+
+--- CSS: TEXT & TYPOGRAPHY ---
+color                  - Sets the color of the text. 
+font-family            - Defines which font/typeface to use (e.g., Arial, sans-serif). 
+font-size              - Sets how large the text appears. 
+font-weight            - Controls the thickness of text (e.g., bold, 400, 700). 
+font-style             - Used to make text italic or normal. 
+text-align             - Moves text to the left, center, right, or justifies it. 
+text-decoration        - Adds or removes lines (e.g., underline, line-through, none). 
+line-height            - Adjusts the vertical spacing between lines of text. 
+letter-spacing         - Adjusts the horizontal space between individual characters. 
+
+--- CSS: THE BOX MODEL (SPACING & SIZING) ---
+width / height         - Sets the specific dimensions of an element's content box. 
+min-width / max-width  - Ensures a box never gets smaller/larger than a certain point. 
+padding                - Space *inside* the box, between the content and the border. 
+border                 - The line around the padding (Set: width, style, color). 
+border-radius          - Rounds the corners of an element's outer border. 
+margin                 - Space *outside* the box, creating distance from other elements. 
+display                - Defines how the box behaves (block, inline, flex, grid). 
+
+--- CSS: BACKGROUNDS ---
+background-color       - Fills the background of an element with a solid color. 
+background-image       - Sets an image to sit behind the content. 
+background-size        - Controls if the image covers the box or fits inside it. 
+background-repeat      - Determines if the image tiles/repeats if it's smaller than the box. 
+background-position    - Moves the background image (e.g., center, top-right). 
+
+--- CSS: SPECIAL EFFECTS ---
+box-shadow             - Adds a drop-shadow effect behind an element's frame. 
+
+
+================================================================================
+                    HTML & CSS ADVANCED (NOT YET LEARNED)
+================================================================================
+
+--- HTML: ADVANCED TEXT & DATA ---
+<hr>                   - A horizontal rule (line) to separate content sections. 
+<mark>                 - Highlights text with a yellow background by default. 
+<del> / <ins>          - Shows "Deleted" (strikethrough) vs "Inserted" (underlined) text. 
+<sub> / <sup>          - Subscript (lower) or Superscript (higher) text. 
+<code>                 - Formats text to look like computer code. 
+<pre>                  - Displays text exactly as typed, preserving spaces and line breaks. 
+<blockquote>           - Indents a long quote from another source. 
+
+--- HTML: TABLES ---
+<table>                - The main container for tabular data. 
+<thead> / <tbody>      - Groups the "Header" rows vs the "Main Content" rows. 
+<tr>                   - Defines a single horizontal "Table Row." 
+<th>                   - A "Table Header" cell (usually bold/centered). 
+<td>                   - A standard "Table Data" cell. 
+<caption>              - A title or description for the entire table. 
+
+--- HTML: ADVANCED LAYOUT & MEDIA ---
+<nav>                  - A section intended for navigation links (menus). 
+<article>              - For self-contained content (like a blog post or news story). 
+<aside>                - Content indirectly related to the main area (sidebar). 
+<figure> / <figcaption>- Groups an image/diagram with its descriptive caption. 
+<video> / <audio>      - Used to embed playable movie or sound files. 
+<iframe>               - Displays an entire different webpage inside a window on yours. 
+
+--- HTML: ADVANCED FORMS ---
+<fieldset> / <legend>  - Groups related inputs together with a visible title. 
+<textarea>             - A larger, multi-line box for long user comments. 
+<progress>             - A visual bar showing how much of a task is done. 
+<details> / <summary>  - A clickable heading that expands to show more hidden info. 
+
+--------------------------------------------------------------------------------
+
+--- CSS: POSITIONING & LAYOUT ---
+position               - How an element sits in the flow (relative, absolute, fixed, sticky). 
+z-index                - Controls which element sits "on top" if they overlap. 
+top/bottom/left/right  - Moves a "positioned" element from its original spot. 
+float / clear          - Older method for wrapping text around images. 
+overflow               - Handles what happens if content is too big for its box. 
+
+--- CSS: FLEXBOX & GRID (MODERN LAYOUT) ---
+display: flex          - Aligns items in a row or column with powerful spacing tools. 
+justify-content        - Aligns items along the main axis (horizontal by default). 
+align-items            - Aligns items along the cross axis (vertical by default). 
+gap                    - Sets a specific distance between items in a Flex/Grid layout. 
+display: grid          - Creates complex layouts using both rows and columns. 
+
+--- CSS: VISUAL EFFECTS & ANIMATION ---
+opacity                - Sets how transparent an element is (0.0 to 1.0). 
+filter                 - Applies effects like blur, grayscale, or brightness. 
+transform              - Moves, rotates, scales, or skews an element. 
+transition             - Animates a CSS change so it happens smoothly over time. 
+animation              - Creates complex, multi-step moving effects. 
+
+--- CSS: INTERACTIVITY ---
+:hover                 - Styles an element only when the mouse is over it. 
+:focus                 - Styles an element (like an input) when it's clicked into. 
+cursor                 - Changes the mouse icon (e.g., to a "hand" pointer). 
