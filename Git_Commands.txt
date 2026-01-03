@@ -45,6 +45,13 @@ git reset --hard <commit-id>    # Reset entire repo to a specific commit
 git log                         # Show full commit history
 git log --oneline               # Show history in a compact format
 git diff                        # Show unstaged changes compared to last commit
+
+--- STASHING IN STACK ---
+git stash	                      # Saves your changes and reverts to a clean state.
+git stash save "message"	      # Saves a stash with a specific name so you can find it later.
+git stash list	                # Shows all the items currently in your "storage locker."
+git stash pop	                  # Applies the most recent stash and removes it from the stack.
+git stash apply	                # Applies the stash but keeps it in the stack (good for reusing it).
+git stash drop	                # Deletes a specific stash from the stack.
+git stash clear	                # Empties the entire storage locker.
 ===============================================================================
-git stash                       # Save file locally
-git stash pop                   # Load stashed file
