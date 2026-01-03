@@ -29,6 +29,7 @@ git branch -d <branch-name>     # Delete a branch
 
 --- REMOTE REPOSITORIES ---
 git remote add origin <url>     # Link local repo to a remote server
+git remote -v                   # Show remote server
 git push -u origin <branch>     # Push changes and set upstream tracking
 git push                        # Push changes to remote
 git pull                        # Fetch and merge changes from remote
