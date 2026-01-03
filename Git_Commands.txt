@@ -46,3 +46,5 @@ git log                         # Show full commit history
 git log --oneline               # Show history in a compact format
 git diff                        # Show unstaged changes compared to last commit
 ===============================================================================
+git stash                       # Save file locally
+git stash pop                   # Load stashed file
