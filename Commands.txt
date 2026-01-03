@@ -1,0 +1,47 @@
+============================================================
+             GIT COMMAND LIST FOR BEGINNERS | | | | | | | | | 
+============================================================
+
+--- SETUP & CONFIGURATION ---
+git --version                   # Check current Git version
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+git config --list               # View all configuration settings
+
+--- STARTING A PROJECT (DO THIS EVERY TIME YOU START A NEW PROJECT!!) ---
+git init                        # Initialize a local Git repository
+git clone <url>                 # Download a project from a remote URL
+
+--- THE STAGING AREA & COMMITTING ---
+git status                      # View changed files and staged changes
+git add <filename>              # Add a specific file to staging
+git add .                       # Add ALL changed files to staging
+git commit -m "Your message"    # Commit staged changes with a message
+git commit --amend              # Edit the most recent commit message
+
+--- BRANCHES ---
+git branch                      # List all local branches
+git branch <branch-name>        # Create a new branch
+git checkout <branch-name>      # Switch to a specific branch
+git checkout -b <branch-name>   # Create AND switch to a new branch
+git merge <branch-name>         # Merge a branch into the current one
+git branch -d <branch-name>     # Delete a branch
+
+--- REMOTE REPOSITORIES ---
+git remote add origin <url>     # Link local repo to a remote server
+git push -u origin <branch>     # Push changes and set upstream tracking
+git push                        # Push changes to remote
+git pull                        # Fetch and merge changes from remote
+git fetch                       # Download changes (but don't merge them)
+
+--- UNDOING CHANGES ---
+git checkout <file>             # Discard changes in a specific file
+git reset HEAD <file>           # Unstage a file but keep the changes
+git reset --hard <commit-id>    # Reset entire repo to a specific commit 
+                                # (CAUTION: erases all uncommitted work)
+
+--- INSPECTING HISTORY ---
+git log                         # Show full commit history
+git log --oneline               # Show history in a compact format
+git diff                        # Show unstaged changes compared to last commit
+===============================================================================
