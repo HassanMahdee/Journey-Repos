@@ -16,7 +16,7 @@ git clone <url>                 # Download a project from a remote URL
 git status                      # View changed files and staged changes
 git add <filename>              # Add a specific file to staging
 git add .                       # Add ALL changed files to staging
-git commit -m "Your message"    # Commit staged changes with a message (YOU DO THIS EVERY TIME YOU CHANGE SOMETHING!!)
+git commit -m "Imp. message"    # Commit staged changes with a message (DO THIS EVERY TIME YOU CHANGE SOMETHING!!)
 git commit --amend              # Edit the most recent commit message
 
 --- BRANCHES ---
@@ -32,7 +32,7 @@ git branch -d <branch-name>     # Delete a branch
 git remote add origin <url>     # Link local repo to a remote server
 git remote -v                   # Show remote server
 git push -u origin <branch>     # Push changes and set upstream tracking
-git push                        # Push changes to remote
+git push                        # Push changes to remote (DO THIS EVERY TIME YOU CHANGE SOMETHING!!)
 git pull                        # Fetch and merge changes from remote
 git fetch                       # Download changes (but don't merge them)
 
