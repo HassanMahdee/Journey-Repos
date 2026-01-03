@@ -8,15 +8,15 @@ git config --global user.name "Your Name"
 git config --global user.email "youremail@example.com"
 git config --list               # View all configuration settings
 
---- STARTING A PROJECT (DO THIS EVERY TIME YOU START A NEW PROJECT!!) ---
-git init                        # Initialize a local Git repository
+--- STARTING A PROJECT ---
+git init                        # Initialize a local Git repository (DO THIS EVERY TIME YOU START A NEW PROJECT!!)
 git clone <url>                 # Download a project from a remote URL
 
 --- THE STAGING AREA & COMMITTING ---
 git status                      # View changed files and staged changes
 git add <filename>              # Add a specific file to staging
 git add .                       # Add ALL changed files to staging
-git commit -m "Your message"    # Commit staged changes with a message
+git commit -m "Your message"    # Commit staged changes with a message (YOU DO THIS EVERY TIME YOU CHANGE SOMETHING!!)
 git commit --amend              # Edit the most recent commit message
 
 --- BRANCHES ---
