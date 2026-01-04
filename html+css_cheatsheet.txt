@@ -34,14 +34,17 @@
 <ol>                   - Creates a numbered (ordered) list. 
 <li>                   - An individual item inside a <ul> or <ol>. 
 <a>                    - A hyperlink. Use the 'href' attribute to set the destination URL. 
-<img>                  - Displays an image. Needs 'src' (path) and 'alt' (description). 
+<img>                  - Displays an image. Needs 'src' (path) and 'alt' (description).
+<nav>                  - A section intended for navigation links (menus).
+<article>              - For self-contained content (like a blog post or news story).
 
 --- HTML: FORMS & INTERACTION ---
 <form>                 - A container that collects user input to send to a server. 
 <label>                - Provides a clickable text description for an input field. 
 <button>               - A clickable button to submit forms or trigger actions. 
 <select>               - Creates a drop-down selection menu. 
-<option>               - An individual choice inside a <select> drop-down. 
+<option>               - An individual choice inside a <select> drop-down.
+<textarea>             - A larger, multi-line box for long user comments.
 
 --- HTML: DEFINITION LISTS ---
 <dl>                   - A list of terms and their specific descriptions. 
@@ -70,6 +73,12 @@ border-radius          - Rounds the corners of an element's outer border.
 margin                 - Space *outside* the box, creating distance from other elements. 
 display                - Defines how the box behaves (block, inline, flex, grid). 
 
+--- CSS: FLEXBOX & GRID (MODERN LAYOUT) ---
+display: flex          - Aligns items in a row or column with powerful spacing tools. 
+justify-content        - Aligns items along the main axis (horizontal by default). 
+align-items            - Aligns items along the cross axis (vertical by default). 
+gap                    - Sets a specific distance between items in a Flex/Grid layout.
+
 --- CSS: BACKGROUNDS ---
 background-color       - Fills the background of an element with a solid color. 
 background-image       - Sets an image to sit behind the content. 
@@ -78,8 +87,9 @@ background-repeat      - Determines if the image tiles/repeats if it's smaller t
 background-position    - Moves the background image (e.g., center, top-right). 
 
 --- CSS: SPECIAL EFFECTS ---
-box-shadow             - Adds a drop-shadow effect behind an element's frame. 
-
+box-shadow             - Adds a drop-shadow effect behind an element's frame.
+opacity                - Sets how transparent an element is (0.0 to 1.0).
+z-index                - Controls which element sits "on top" if they overlap.
 
 ================================================================================
                     HTML & CSS ADVANCED (NOT YET LEARNED)
@@ -102,17 +112,14 @@ box-shadow             - Adds a drop-shadow effect behind an element's frame.
 <td>                   - A standard "Table Data" cell. 
 <caption>              - A title or description for the entire table. 
 
---- HTML: ADVANCED LAYOUT & MEDIA ---
-<nav>                  - A section intended for navigation links (menus). 
-<article>              - For self-contained content (like a blog post or news story). 
+--- HTML: ADVANCED LAYOUT & MEDIA --- 
 <aside>                - Content indirectly related to the main area (sidebar). 
 <figure> / <figcaption>- Groups an image/diagram with its descriptive caption. 
 <video> / <audio>      - Used to embed playable movie or sound files. 
 <iframe>               - Displays an entire different webpage inside a window on yours. 
 
 --- HTML: ADVANCED FORMS ---
-<fieldset> / <legend>  - Groups related inputs together with a visible title. 
-<textarea>             - A larger, multi-line box for long user comments. 
+<fieldset> / <legend>  - Groups related inputs together with a visible title.  
 <progress>             - A visual bar showing how much of a task is done. 
 <details> / <summary>  - A clickable heading that expands to show more hidden info. 
 
@@ -120,20 +127,14 @@ box-shadow             - Adds a drop-shadow effect behind an element's frame.
 
 --- CSS: POSITIONING & LAYOUT ---
 position               - How an element sits in the flow (relative, absolute, fixed, sticky). 
-z-index                - Controls which element sits "on top" if they overlap. 
 top/bottom/left/right  - Moves a "positioned" element from its original spot. 
 float / clear          - Older method for wrapping text around images. 
 overflow               - Handles what happens if content is too big for its box. 
 
 --- CSS: FLEXBOX & GRID (MODERN LAYOUT) ---
-display: flex          - Aligns items in a row or column with powerful spacing tools. 
-justify-content        - Aligns items along the main axis (horizontal by default). 
-align-items            - Aligns items along the cross axis (vertical by default). 
-gap                    - Sets a specific distance between items in a Flex/Grid layout. 
 display: grid          - Creates complex layouts using both rows and columns. 
 
 --- CSS: VISUAL EFFECTS & ANIMATION ---
-opacity                - Sets how transparent an element is (0.0 to 1.0). 
 filter                 - Applies effects like blur, grayscale, or brightness. 
 transform              - Moves, rotates, scales, or skews an element. 
 transition             - Animates a CSS change so it happens smoothly over time. 
