@@ -19,7 +19,8 @@
 <b>                    - Makes text bold for visual style without extra importance. 
 <em>                   - Italics that indicate emphasis when reading. 
 <i>                    - Italics for visual style (like technical terms or thoughts). 
-<small>                - For "fine print" like legal disclaimers or copyright text. 
+<small>                - For "fine print" like legal disclaimers or copyright text.
+<hr>                   - A horizontal rule (line) to separate content sections.
 
 --- HTML: LAYOUT CONTAINERS (SEMANTIC) ---
 <main>                 - Wraps the unique, central content of your webpage. 
@@ -37,6 +38,9 @@
 <img>                  - Displays an image. Needs 'src' (path) and 'alt' (description).
 <nav>                  - A section intended for navigation links (menus).
 <article>              - For self-contained content (like a blog post or news story).
+<figure> / <figcaption>- Groups an image/diagram with its descriptive caption.
+<video> / <audio>      - Used to embed playable movie or sound files. 
+<iframe>               - Displays an entire different webpage inside a window on yours.
 
 --- HTML: FORMS & INTERACTION ---
 <form>                 - A container that collects user input to send to a server. 
@@ -45,11 +49,20 @@
 <select>               - Creates a drop-down selection menu. 
 <option>               - An individual choice inside a <select> drop-down.
 <textarea>             - A larger, multi-line box for long user comments.
+<fieldset> / <legend>  - Groups related inputs together with a visible title.
 
 --- HTML: DEFINITION LISTS ---
 <dl>                   - A list of terms and their specific descriptions. 
 <dt>                   - The specific "Term" or name being defined. 
-<dd>                   - The detailed description or definition for the term. 
+<dd>                   - The detailed description or definition for the term.
+
+--- HTML: TABLES ---
+<table>                - The main container for tabular data. 
+<thead> / <tbody>      - Groups the "Header" rows vs the "Main Content" rows. 
+<tr>                   - Defines a single horizontal "Table Row." 
+<th>                   - A "Table Header" cell (usually bold/centered). 
+<td>                   - A standard "Table Data" cell. 
+<caption>              - A title or description for the entire table.
 
 --------------------------------------------------------------------------------
 
@@ -91,12 +104,16 @@ box-shadow             - Adds a drop-shadow effect behind an element's frame.
 opacity                - Sets how transparent an element is (0.0 to 1.0).
 z-index                - Controls which element sits "on top" if they overlap.
 
+--- CSS: INTERACTIVITY ---:
+hover                 - Styles an element only when the mouse is over it.
+cursor                 - Changes the mouse icon (e.g., to a "hand" pointer).
+
 ================================================================================
                     HTML & CSS ADVANCED (NOT YET LEARNED)
 ================================================================================
 
 --- HTML: ADVANCED TEXT & DATA ---
-<hr>                   - A horizontal rule (line) to separate content sections. 
+
 <mark>                 - Highlights text with a yellow background by default. 
 <del> / <ins>          - Shows "Deleted" (strikethrough) vs "Inserted" (underlined) text. 
 <sub> / <sup>          - Subscript (lower) or Superscript (higher) text. 
@@ -104,22 +121,10 @@ z-index                - Controls which element sits "on top" if they overlap.
 <pre>                  - Displays text exactly as typed, preserving spaces and line breaks. 
 <blockquote>           - Indents a long quote from another source. 
 
---- HTML: TABLES ---
-<table>                - The main container for tabular data. 
-<thead> / <tbody>      - Groups the "Header" rows vs the "Main Content" rows. 
-<tr>                   - Defines a single horizontal "Table Row." 
-<th>                   - A "Table Header" cell (usually bold/centered). 
-<td>                   - A standard "Table Data" cell. 
-<caption>              - A title or description for the entire table. 
-
 --- HTML: ADVANCED LAYOUT & MEDIA --- 
 <aside>                - Content indirectly related to the main area (sidebar). 
-<figure> / <figcaption>- Groups an image/diagram with its descriptive caption. 
-<video> / <audio>      - Used to embed playable movie or sound files. 
-<iframe>               - Displays an entire different webpage inside a window on yours. 
 
 --- HTML: ADVANCED FORMS ---
-<fieldset> / <legend>  - Groups related inputs together with a visible title.  
 <progress>             - A visual bar showing how much of a task is done. 
 <details> / <summary>  - A clickable heading that expands to show more hidden info. 
 
@@ -141,6 +146,5 @@ transition             - Animates a CSS change so it happens smoothly over time.
 animation              - Creates complex, multi-step moving effects. 
 
 --- CSS: INTERACTIVITY ---
-:hover                 - Styles an element only when the mouse is over it. 
+
 :focus                 - Styles an element (like an input) when it's clicked into. 
-cursor                 - Changes the mouse icon (e.g., to a "hand" pointer). 
