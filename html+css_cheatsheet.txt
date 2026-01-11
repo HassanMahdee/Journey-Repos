@@ -1,5 +1,5 @@
 ================================================================================
-                    HTML & CSS BEGINNER CHEATSHEET (LEARNED)
+                    HTML & CSS CHEATSHEET (LEARNED + ADVANCED)
 ================================================================================
 
 --- HTML: PAGE STRUCTURE & METADATA ---
@@ -9,7 +9,7 @@
 <meta charset="UTF-8"> - Ensures special characters and symbols display correctly. 
 <meta name="viewport"> - Sets the visible area of the page; essential for mobile responsiveness. 
 <title>                - The text shown on the browser tab or in search results. 
-<link>                 - Connects your HTML to external files, like your CSS stylesheet. 
+<link>                 - Connects your HTML to external files, like your CSS stylesheet, or favicon, or fonts and icons. 
 <body>                 - Contains all the visible content (text, images, buttons). 
 
 --- HTML: CONTENT HIERARCHY & TEXT ---
@@ -21,6 +21,8 @@
 <i>                    - Italics for visual style (like technical terms or thoughts). 
 <small>                - For "fine print" like legal disclaimers or copyright text.
 <hr>                   - A horizontal rule (line) to separate content sections.
+<address>              - Contact information for author/owner. Usually italicized.
+  *Attributes: Global attributes only
 
 --- HTML: LAYOUT CONTAINERS (SEMANTIC) ---
 <main>                 - Wraps the unique, central content of your webpage. 
@@ -35,12 +37,20 @@
 <ol>                   - Creates a numbered (ordered) list. 
 <li>                   - An individual item inside a <ul> or <ol>. 
 <a>                    - A hyperlink. Use the 'href' attribute to set the destination URL. 
+  *Attributes: 
+    download            - Prompts download instead of navigation
+    target              - Where to open link: "_self" (default), "_blank" (new tab/window), 
+                         "_parent" (parent frame), "_top" (full window), or frame name
 <img>                  - Displays an image. Needs 'src' (path) and 'alt' (description).
 <nav>                  - A section intended for navigation links (menus).
 <article>              - For self-contained content (like a blog post or news story).
 <figure> / <figcaption>- Groups an image/diagram with its descriptive caption.
 <video> / <audio>      - Used to embed playable movie or sound files. 
 <iframe>               - Displays an entire different webpage inside a window on yours.
+<source>               - Media resource for <picture>, <audio>, <video>.
+  *Attributes: src, srcset, sizes, media, type
+<embed>                - Embeds external content/plugin (Flash, PDF viewer).
+  *Attributes: src, type, width, height
 
 --- HTML: FORMS & INTERACTION ---
 <form>                 - A container that collects user input to send to a server. 
@@ -50,6 +60,13 @@
 <option>               - An individual choice inside a <select> drop-down.
 <textarea>             - A larger, multi-line box for long user comments.
 <fieldset> / <legend>  - Groups related inputs together with a visible title.
+<input> types:
+  type="email"         - Email address with validation
+  *Additional types: text, password, checkbox, radio, submit, reset, button
+<input> attributes:
+  *placeholder         - Hint text in empty field
+  *required            - Field must be filled before submission (boolean attribute)
+  *Additional attributes: name
 
 --- HTML: DEFINITION LISTS ---
 <dl>                   - A list of terms and their specific descriptions. 
@@ -64,6 +81,11 @@
 <td>                   - A standard "Table Data" cell. 
 <caption>              - A title or description for the entire table.
 
+--- HTML: GLOBAL ATTRIBUTES (WORK ON ALL ELEMENTS) ---
+*class                 - Space-separated CSS class names for styling
+*id                    - Unique identifier for element (must be unique per page)
+*style                 - Inline CSS styles (direct styling on element)
+
 --------------------------------------------------------------------------------
 
 --- CSS: TEXT & TYPOGRAPHY ---
@@ -76,6 +98,8 @@ text-align             - Moves text to the left, center, right, or justifies it.
 text-decoration        - Adds or removes lines (e.g., underline, line-through, none). 
 line-height            - Adjusts the vertical spacing between lines of text. 
 letter-spacing         - Adjusts the horizontal space between individual characters. 
+::first-line           - Styles first line of text in an element
+::first-letter         - Styles first letter of text in an element
 
 --- CSS: THE BOX MODEL (SPACING & SIZING) ---
 width / height         - Sets the specific dimensions of an element's content box. 
@@ -85,12 +109,76 @@ border                 - The line around the padding (Set: width, style, color).
 border-radius          - Rounds the corners of an element's outer border. 
 margin                 - Space *outside* the box, creating distance from other elements. 
 display                - Defines how the box behaves (block, inline, flex, grid). 
+box-sizing             - Controls how width/height are calculated
+  *Values:             - content-box (default), border-box (includes padding/border)
+display values:
+  *block              - Takes full width, forces line break before/after
+  *inline             - Flows with text, ignores width/height
+  *inline-block       - Flows inline but respects width/height/margin/padding
+  *flex               - Flexbox container
+  *grid               - Grid container
+  *none               - Completely removed from flow
+  
 
 --- CSS: FLEXBOX & GRID (MODERN LAYOUT) ---
 display: flex          - Aligns items in a row or column with powerful spacing tools. 
 justify-content        - Aligns items along the main axis (horizontal by default). 
 align-items            - Aligns items along the cross axis (vertical by default). 
 gap                    - Sets a specific distance between items in a Flex/Grid layout.
+display: grid          - Creates complex layouts using both rows and columns.
+
+Flexbox properties:
+flex-direction         - Main axis direction: row (default), row-reverse, column, column-reverse
+flex-wrap              - Wrapping: nowrap (default), wrap, wrap-reverse
+flex-flow              - Shorthand for flex-direction and flex-wrap
+justify-content        - Main axis alignment: flex-start, flex-end, center, space-between, space-around, space-evenly
+align-items            - Cross axis alignment: stretch, flex-start, flex-end, center, baseline
+align-content          - Multi-line alignment: flex-start, flex-end, center, space-between, space-around, stretch
+align-self             - Individual item alignment: auto, flex-start, flex-end, center, baseline, stretch
+flex-grow              - Growth factor (0 = no grow, 1 = grows)
+flex-shrink            - Shrink factor (0 = no shrink, 1 = shrinks)
+flex-basis             - Initial size: auto, content, or specific length
+flex                   - Shorthand: flex-grow flex-shrink flex-basis
+order                  - Visual order (integer)
+
+Grid properties:
+grid-template-columns  - Defines column track sizes: none, auto, length, %, fr, min-content, max-content, minmax(), repeat()
+  *Example: grid-template-columns: 100px 1fr 2fr;
+grid-template-rows     - Defines row track sizes (same values as columns)
+grid-template-areas    - Named grid areas using strings
+  *Example: grid-template-areas: "header header" "sidebar main" "footer footer";
+grid-template          - Shorthand: rows / columns / areas
+grid-auto-columns      - Size of implicitly created columns
+grid-auto-rows         - Size of implicitly created rows
+grid-auto-flow         - Auto-placement: row, column, dense
+grid                   - Most comprehensive shorthand
+grid-column-start      - Start line for column: line number, span n, auto
+grid-column-end        - End line for column
+grid-row-start         - Start line for row
+grid-row-end           - End line for row
+grid-column            - Shorthand: start / end
+grid-row               - Shorthand: start / end
+grid-area              - Shorthand: row-start / column-start / row-end / column-end OR area name
+justify-items          - Horizontal alignment in grid cell: stretch, start, end, center
+align-items           - Vertical alignment in grid cell: stretch, start, end, center
+justify-content       - Horizontal alignment of grid tracks: start, end, center, stretch, space-around, space-between, space-evenly
+align-content         - Vertical alignment of grid tracks (same values as justify-content)
+
+Grid functions:
+*repeat()            - Repeats track pattern: repeat(3, 1fr) = 1fr 1fr 1fr
+*minmax()            - Size range: minmax(200px, 1fr) = minimum 200px, maximum 1fr
+*fit-content()       - Clamps size: fit-content(300px) = auto but max 300px
+
+--- CSS: POSITIONING & LAYOUT ---
+position               - How an element sits in the flow (relative, absolute, fixed, sticky). 
+  *Values:
+    static            - Default. Element flows normally (cannot use top/right/etc.)
+    relative          - Positioned relative to its normal position
+    absolute          - Removed from flow, positioned relative to nearest positioned ancestor
+    fixed             - Removed from flow, positioned relative to viewport (stays on scroll)
+    sticky            - Hybrid: acts relative until scroll threshold, then fixed
+top/bottom/left/right  - Moves a "positioned" element from its original spot.
+z-index                - Controls which element sits "on top" if they overlap (higher = top).
 
 --- CSS: BACKGROUNDS ---
 background-color       - Fills the background of an element with a solid color. 
@@ -98,15 +186,146 @@ background-image       - Sets an image to sit behind the content.
 background-size        - Controls if the image covers the box or fits inside it. 
 background-repeat      - Determines if the image tiles/repeats if it's smaller than the box. 
 background-position    - Moves the background image (e.g., center, top-right). 
+background             - Shorthand for all background properties
+*url()               - References external resource for background-image
+  *Example: background-image: url("image.jpg");
+*linear-gradient()   - Linear color gradient for backgrounds
+  *Example: background: linear-gradient(to right, red, blue);
 
 --- CSS: SPECIAL EFFECTS ---
 box-shadow             - Adds a drop-shadow effect behind an element's frame.
 opacity                - Sets how transparent an element is (0.0 to 1.0).
 z-index                - Controls which element sits "on top" if they overlap.
+column-gap             - Gap between columns in multi-column layout or grid
+  *Also: row-gap, gap (shorthand for row-gap and column-gap)
 
---- CSS: INTERACTIVITY ---:
-hover                 - Styles an element only when the mouse is over it.
-cursor                 - Changes the mouse icon (e.g., to a "hand" pointer).
+--- CSS: INTERACTIVITY ---
+:hover                  - Styles an element only when the mouse is over it.
+:cursor                 - Changes the mouse icon (e.g., to a "hand" pointer)
+:focus                  - Styles an element (like an input) when it's clicked into.
+
+--- CSS: SELECTORS (EXPANDED) ---
+Attribute selectors:
+  [attribute]          - Elements with attribute
+    *Example: [disabled] selects all disabled elements
+  [attribute="value"]  - Exact attribute value
+    *Example: [type="email"] selects all email inputs
+  [attribute~="value"] - Attribute contains word (space-separated)
+    *Example: [class~="btn"] selects elements with class containing "btn"
+  [attribute|="value"] - Attribute starts with word or word-
+    *Example: [lang|="en"] selects lang="en" or lang="en-US"
+  [attribute^="value"] - Attribute starts with string
+    *Example: [href^="https"] selects links starting with "https"
+  [attribute$="value"] - Attribute ends with string
+    *Example: [src$=".jpg"] selects images ending with ".jpg"
+  [attribute*="value"] - Attribute contains substring
+    *Example: [href*="example"] selects links containing "example"
+
+Pseudo-classes:
+  :first-child         - First child element
+  :last-child          - Last child element
+  :nth-child(n)        - nth child element (even, odd, 2n, 3n+1)
+    *Examples: 
+      :nth-child(2) - Second child
+      :nth-child(odd) - All odd children
+      :nth-child(3n) - Every third child
+      :nth-child(3n+1) - First child of each group of three
+  :nth-last-child(n)   - nth child from end
+  :first-of-type       - First of its type among siblings
+  :last-of-type        - Last of its type among siblings
+  :nth-of-type(n)      - nth of its type
+  :only-child          - Element with no siblings
+  :only-of-type        - Only element of its type among siblings
+  :not(selector)       - Negation pseudo-class
+  :empty               - Element with no children
+  :root                - Root element of document (<html>)
+
+Pseudo-elements:
+  ::before             - Inserts content before element (requires 'content' property)
+    *Example: .element::before { content: "→ "; }
+  ::after              - Inserts content after element (requires 'content' property)
+  ::first-line         - Styles first line of text
+  ::first-letter       - Styles first letter of text
+  ::selection          - Styles user-selected text
+    *Example: ::selection { background: yellow; }
+  ::placeholder        - Styles placeholder text in inputs
+  ::marker             - Styles list item markers (bullets/numbers)
+
+--- CSS: UNITS & VALUES ---
+Absolute lengths:
+  *px                  - Pixels (1/96th of 1in) - Most common for screens
+  *cm                  - Centimeters (1cm = 37.8px)
+  *mm                  - Millimeters (1mm = 3.78px)
+  *in                  - Inches (1in = 96px = 2.54cm)
+  *pt                  - Points (1pt = 1/72 of 1in = 1.33px)
+  *pc                  - Picas (1pc = 12pt = 16px)
+
+Relative lengths:
+  *em                  - Relative to element's font-size (1em = current font-size)
+    *Example: If font-size is 16px, 2em = 32px
+  *rem                 - Relative to root element's font-size (1rem = root font-size)
+    *Example: If html font-size is 16px, 1.5rem = 24px
+  *%                   - Percentage of parent element's corresponding dimension
+  *vw                  - 1% of viewport width (100vw = full viewport width)
+  *vh                  - 1% of viewport height (100vh = full viewport height)
+  *vmin                - 1% of viewport's smaller dimension
+  *vmax                - 1% of viewport's larger dimension
+  *ch                  - Width of "0" character in current font
+  *ex                  - Height of "x" character in current font
+
+Angles:
+  *deg                 - Degrees (360deg = full circle)
+  *rad                 - Radians (6.283rad = 360deg)
+  *grad                - Gradians (400grad = 360deg)
+  *turn                - Turns (1turn = 360deg)
+
+Times:
+  *s                   - Seconds
+  *ms                  - Milliseconds (1000ms = 1s)
+
+--- CSS: COLOR FUNCTIONS ---
+*rgb(r, g, b)        - Red, Green, Blue (0-255)
+  *Example: rgb(255, 0, 0) = red
+*rgba(r, g, b, a)    - RGB with alpha (opacity 0-1)
+  *Example: rgba(255, 0, 0, 0.5) = semi-transparent red
+*hsl(h, s, l)        - Hue (0-360), Saturation % (0-100), Lightness % (0-100)
+  *Example: hsl(0, 100%, 50%) = red
+*hsla(h, s, l, a)    - HSL with alpha (opacity 0-1)
+*hwb(h, w, b)        - Hue, Whiteness %, Blackness %
+*hex                 - #RRGGBB or #RGB (shorthand)
+  *Examples: #ff0000 = red, #f00 = red (shorthand), #ff000080 = semi-transparent red
+
+Named colors:
+  *red, green, blue, black, white, gray, silver, yellow, purple, orange, pink, 
+   brown, cyan, magenta, teal, navy, maroon, olive, lime, aqua, fuchsia
+
+--- CSS: FUNCTIONS ---
+*calc()              - Mathematical expressions
+  *Examples: 
+    calc(100% - 20px)
+    calc(50vw + 10rem)
+    calc(100vh - 80px)
+*min()               - Minimum value from list
+  *Example: width: min(50%, 300px) = width is smaller of 50% or 300px
+*max()               - Maximum value from list
+  *Example: width: max(50%, 300px) = width is larger of 50% or 300px
+*clamp(min, val, max)- Constrains value between min and max
+  *Example: font-size: clamp(1rem, 2.5vw, 2rem) = font between 1rem and 2rem
+*var(--name, fallback)- CSS custom property variable
+  *Example: color: var(--primary-color, blue)
+*attr()              - Gets attribute value from element
+  *Example: content: attr(data-tooltip)
+*url()               - References external resource
+  *Example: background-image: url("image.jpg")
+*linear-gradient()   - Linear color gradient
+  *Examples:
+    linear-gradient(red, blue)
+    linear-gradient(to right, red, blue)
+    linear-gradient(45deg, red, blue)
+    linear-gradient(to bottom right, red, blue)
+*radial-gradient()   - Circular gradient
+*conic-gradient()    - Color wheel gradient
+*repeating-linear-gradient() - Repeating linear gradient
 
 ================================================================================
                     HTML & CSS ADVANCED (NOT YET LEARNED)
@@ -115,36 +334,934 @@ cursor                 - Changes the mouse icon (e.g., to a "hand" pointer).
 --- HTML: ADVANCED TEXT & DATA ---
 
 <mark>                 - Highlights text with a yellow background by default. 
+  *Attributes: Global attributes only
 <del> / <ins>          - Shows "Deleted" (strikethrough) vs "Inserted" (underlined) text. 
+  *Attributes: cite (URL explaining change), datetime (when change was made)
 <sub> / <sup>          - Subscript (lower) or Superscript (higher) text. 
+  *Attributes: Global attributes only
 <code>                 - Formats text to look like computer code. 
+  *Attributes: Global attributes only
 <pre>                  - Displays text exactly as typed, preserving spaces and line breaks. 
-<blockquote>           - Indents a long quote from another source. 
+  *Attributes: Global attributes only
+<blockquote>           - Indents a long quote from another source.
+  *Attributes: cite (URL to source)
+<q>                    - Inline quotation. Browsers typically add quotes automatically.
+  *Attributes: cite (URL to source)
+<abbr>                 - Abbreviation or acronym. Use 'title' attribute for full form.
+  *Attributes: title (full expansion)
+<cite>                 - Title of creative work (book, movie, song). Usually italicized.
+  *Attributes: Global attributes only
+<time>                 - Represents specific time/date.
+  *Attributes: datetime (machine-readable format), pubdate (publication date)
+<data>                 - Links content to machine-readable value.
+  *Attributes: value (machine-readable form)
+<var>                  - Variable in mathematical/computer context. Usually italicized.
+  *Attributes: Global attributes only
+<samp>                 - Sample output from computer program.
+  *Attributes: Global attributes only
+<kbd>                  - Keyboard input. Usually monospace font.
+  *Attributes: Global attributes only
+<meter>                - Scalar measurement within known range (disk usage, votes).
+  *Attributes: value, min, max, low, high, optimum, form
+<progress>             - A visual bar showing how much of a task is done.
+  *Attributes: value, max
 
 --- HTML: ADVANCED LAYOUT & MEDIA --- 
-<aside>                - Content indirectly related to the main area (sidebar). 
 
---- HTML: ADVANCED FORMS ---
-<progress>             - A visual bar showing how much of a task is done. 
-<details> / <summary>  - A clickable heading that expands to show more hidden info. 
+<aside>                - Content indirectly related to the main area (sidebar).
+  *Attributes: Global attributes only
+<details> / <summary>  - A clickable heading that expands to show more hidden info.
+  *Attributes: open (boolean - shows content when present)
+<dialog>               - Dialog box/modal window.
+  *Attributes: open (boolean - shows dialog when present)
+<template>             - HTML markup template (not rendered, used with JavaScript).
+  *Attributes: Global attributes only
+<slot>                 - Placeholder in web component.
+  *Attributes: name (identifies slot)
+<picture>              - Responsive images with multiple sources.
+  *Attributes: Global attributes only
+<track>                - Text tracks for <audio>/<video> (subtitles, captions).
+  *Attributes: kind, src, srclang, label, default
+<object>               - Embeds external resource (image, PDF, another HTML page).
+  *Attributes: data, type, width, height, form, name
+<map> / <area>         - Image map with clickable areas.
+  *Attributes for <area>: shape, coords, href, alt, target, rel, download
+<datalist>             - Predefined options for <input> element (autocomplete).
+  *Attributes: Global attributes only
+<output>               - Result of calculation/user action.
+  *Attributes: for, form, name
+<ruby>, <rt>, <rp>     - Ruby annotations (East Asian typography).
+  *Attributes: Global attributes only
+
+--- HTML: ADVANCED FORM ELEMENTS & ATTRIBUTES ---
+
+<input> advanced types:
+  type="color"         - Color picker
+  type="date"          - Date picker
+  type="datetime-local"- Local date/time picker
+  type="month"         - Month/year picker
+  type="number"        - Numerical input with spinner
+  type="range"         - Slider control
+  type="search"        - Search field
+  type="tel"           - Telephone number
+  type="time"          - Time picker
+  type="url"           - URL input with validation
+  type="week"          - Week/year picker
+
+Form input advanced attributes:
+  *accept              - File types for file upload (e.g., "image/*", ".pdf", "video/*")
+  *autocomplete        - "on" or "off" for browser autocomplete, or specific field types
+  *capture             - Media capture method for file input ("user", "environment")
+  *dirname             - Direction of text submission
+  *formaction          - Overrides form's action attribute for submit button
+  *formenctype         - Encoding type for form submission: "application/x-www-form-urlencoded" (default), "multipart/form-data", "text/plain"
+  *formmethod          - HTTP method override for submit button: "get", "post", "dialog"
+  *formnovalidate      - Bypasses form validation (boolean)
+  *formtarget          - Where to display response for submit button: "_self", "_blank", "_parent", "_top", framename
+  *list                - Associates with <datalist> ID for autocomplete suggestions
+  *max/min             - Maximum/minimum values (for numbers, dates, etc.)
+  *maxlength/minlength - Maximum/minimum characters allowed
+  *multiple            - Allows multiple values (for file uploads, email inputs)
+  *pattern             - Regular expression validation (e.g., pattern="[A-Za-z]{3}")
+  *readonly            - Field cannot be edited but is submitted with form
+  *step                - Incremental steps for numbers/dates (e.g., step="2" or step="0.1")
+  *wrap                - How textarea wraps text: "hard" (breaks with newlines), "soft" (default)
+
+<a> advanced attributes:
+  *hreflang            - Language of linked resource (e.g., "en", "fr", "es")
+  *ping                - URLs to notify when link is followed (space-separated)
+  *referrerpolicy      - How much referrer info to send: "no-referrer", "no-referrer-when-downgrade", "origin", "origin-when-cross-origin", "same-origin", "strict-origin", "strict-origin-when-cross-origin", "unsafe-url"
+  *rel                 - Relationship between current and linked document: 
+                         "alternate", "author", "bookmark", "external", "help", 
+                         "license", "next", "nofollow", "noopener", "noreferrer", 
+                         "prev", "search", "tag"
+
+<img> advanced attributes:
+  *decoding            - Image decoding hint: "sync" (decode with paint), "async" (decode async), "auto" (browser decides)
+  *fetchpriority       - Loading priority: "high", "low", "auto"
+  *loading             - "eager" (load immediately) or "lazy" (load when near viewport)
+  *sizes               - Image sizes for different layouts (used with srcset)
+  *srcset              - Multiple image sources for different resolutions
+
+<link> advanced attributes:
+  *as                  - Type of content being loaded: "audio", "document", "embed", 
+                         "fetch", "font", "image", "object", "script", "style", 
+                         "track", "video", "worker"
+  *crossorigin         - CORS settings: "anonymous" (no credentials), "use-credentials"
+  *disabled            - Boolean - disables stylesheet (for alternate stylesheets)
+  *hreflang            - Language of linked resource
+  *imagesizes          - Image sizes for preload
+  *imagesrcset         - Image sources for preload
+  *integrity           - Subresource integrity hash (e.g., "sha384-...")
+  *media               - Media query for when to apply stylesheet (e.g., "(max-width: 600px)")
+  *prefetch            - Hints browser to prefetch resource
+  *referrerpolicy      - Referrer policy for fetch
+  *rel advanced values: "preload", "preconnect", "prefetch", "dns-prefetch", "prerender", 
+                        "modulepreload", "stylesheet", "icon", "manifest", "apple-touch-icon"
+
+--- HTML: MICRODATA & STRUCTURED DATA ---
+
+itemscope              - Marks element as containing microdata (boolean)
+itemtype               - URL of vocabulary (usually Schema.org URL)
+itemprop               - Property name from vocabulary
+itemid                 - Global identifier for item
+itemref                - References additional properties on other elements
+
+Example:
+<div itemscope itemtype="https://schema.org/Person">
+  <span itemprop="name">John Doe</span>
+  <a itemprop="url" href="http://example.com">Website</a>
+</div>
+
+--- HTML: ARIA ATTRIBUTES (ACCESSIBILITY) ---
+
+aria-label             - Provides accessible name when no visible label exists
+aria-labelledby        - References element(s) that provide name (ID reference list)
+aria-describedby       - References element(s) that provide description
+aria-hidden            - Hides element from screen readers: "true" or "false"
+aria-live              - Dynamic content announcements: "off", "polite", "assertive"
+aria-atomic            - Whether entire region should be read: "true" or "false"
+aria-busy              - Element is being updated: "true" or "false"
+aria-controls          - IDs of elements controlled by this element
+aria-current           - Current item: "page", "step", "location", "date", "time", "true", "false"
+aria-disabled          - Element is disabled but perceivable: "true" or "false"
+aria-expanded          - Expandable element state: "true", "false", "undefined"
+aria-haspopup          - Element has popup: "true", "menu", "listbox", "tree", "grid", "dialog"
+aria-level             - Hierarchical level (number)
+aria-modal             - Element is modal dialog: "true" or "false"
+aria-multiline         - Textbox allows multiple lines: "true" or "false"
+aria-multiselectable   - Multiple selection allowed: "true" or "false"
+aria-orientation       - Orientation: "horizontal", "vertical", "undefined"
+aria-placeholder       - Short hint (similar to HTML placeholder)
+aria-posinset          - Position in set (number)
+aria-pressed           - Toggle button state: "true", "false", "mixed", "undefined"
+aria-readonly          - Read-only: "true" or "false"
+aria-required          - Required field: "true" or "false"
+aria-selected          - Selection state: "true", "false", "undefined"
+aria-setsize           - Number of items in set (number)
+aria-sort              - Sort order: "ascending", "descending", "none", "other"
+aria-valuemax          - Maximum value (number)
+aria-valuemin          - Minimum value (number)
+aria-valuenow          - Current value (number)
+aria-valuetext         - Human-readable alternative to valuenow
 
 --------------------------------------------------------------------------------
 
---- CSS: POSITIONING & LAYOUT ---
-position               - How an element sits in the flow (relative, absolute, fixed, sticky). 
-top/bottom/left/right  - Moves a "positioned" element from its original spot. 
-float / clear          - Older method for wrapping text around images. 
-overflow               - Handles what happens if content is too big for its box. 
+--- CSS: ADVANCED POSITIONING & LAYOUT ---
 
---- CSS: FLEXBOX & GRID (MODERN LAYOUT) ---
-display: grid          - Creates complex layouts using both rows and columns. 
+float / clear          - Older method for wrapping text around images.
+  *float values:       - left (floats left), right (floats right), none (default), inherit
+  *clear values:       - left (clear left floats), right (clear right floats), both (clear both), none (default), inherit
+
+overflow               - Handles what happens if content is too big for its box.
+  *overflow values:    
+    visible           - Content overflows outside box (default)
+    hidden            - Content clipped, no scrollbars
+    scroll            - Content clipped, scrollbars always visible
+    auto              - Browser decides (usually scrollbars when needed)
+    clip              - Similar to hidden but no programmatic scrolling
+  *overflow-x         - Horizontal overflow only
+  *overflow-y         - Vertical overflow only
+
+visibility             - Controls element visibility without affecting layout.
+  *Values:            
+    visible           - Element is visible (default)
+    hidden            - Element is invisible but takes up space
+    collapse          - For table rows/columns; removes space (like display: none)
+
+clip-path              - Clips element to custom shape.
+  *Values:
+    circle()          - circle(radius at x y)
+    ellipse()         - ellipse(rx ry at x y)
+    polygon()         - polygon(x1 y1, x2 y2, ...)
+    url()             - References SVG clipPath
+    inset()           - inset(top right bottom left round border-radius)
+
+shape-outside          - Defines shape for text wrapping around float.
+  *Values: same as clip-path plus: margin-box, border-box, padding-box, content-box
 
 --- CSS: VISUAL EFFECTS & ANIMATION ---
-filter                 - Applies effects like blur, grayscale, or brightness. 
-transform              - Moves, rotates, scales, or skews an element. 
-transition             - Animates a CSS change so it happens smoothly over time. 
-animation              - Creates complex, multi-step moving effects. 
 
---- CSS: INTERACTIVITY ---
+filter                 - Applies effects like blur, grayscale, or brightness.
+  *filter functions:
+    blur(px)           - Gaussian blur: blur(5px)
+    brightness(%)      - Brightness: brightness(150%) = 1.5x brighter
+    contrast(%)        - Contrast: contrast(200%) = 2x more contrast
+    drop-shadow()      - Drop shadow: drop-shadow(2px 2px 5px black)
+    grayscale(%)       - Grayscale: grayscale(100%) = completely gray
+    hue-rotate(deg)    - Hue rotation: hue-rotate(90deg)
+    invert(%)          - Color inversion: invert(100%) = negative
+    opacity(%)         - Transparency: opacity(50%) = 50% transparent
+    saturate(%)        - Saturation: saturate(200%) = 2x more saturated
+    sepia(%)           - Sepia tone: sepia(100%) = full sepia
+    url()              - SVG filter
 
-:focus                 - Styles an element (like an input) when it's clicked into. 
+  *Multiple filters: filter: blur(2px) grayscale(50%) brightness(120%);
+
+transform              - Moves, rotates, scales, or skews an element.
+  *2D transform functions:
+    translate(x, y)    - Moves element: translate(50px, 100px)
+    translateX(x)      - Horizontal movement: translateX(50px)
+    translateY(y)      - Vertical movement: translateY(100px)
+    scale(x, y)        - Resizes: scale(1.5) or scale(2, 1.5)
+    scaleX(x)          - Horizontal scaling: scaleX(1.5)
+    scaleY(y)          - Vertical scaling: scaleY(1.5)
+    rotate(deg)        - Rotation: rotate(45deg)
+    skew(x, y)         - Skew distortion: skew(20deg, 10deg)
+    skewX(x)           - Horizontal skew: skewX(20deg)
+    skewY(y)           - Vertical skew: skewY(10deg)
+    matrix(a,b,c,d,e,f)- 6-value transformation matrix
+
+  *3D transform functions:
+    translate3d(x,y,z)
+    scale3d(x,y,z)
+    rotate3d(x,y,z,angle)
+    perspective(length)
+
+  *Multiple transforms: transform: rotate(45deg) scale(1.5) translateX(50px);
+
+transform-origin       - Origin point for transformations.
+  *Values:             
+    Keyword: left, center, right, top, bottom
+    Length: 50px, 20%
+    Percentage: 50% 50% (default center)
+    Example: transform-origin: top left;
+
+transition             - Animates a CSS change so it happens smoothly over time.
+  *Properties:
+    transition-property - Which properties to animate: 
+                         all, none, or specific properties (width, opacity, etc.)
+    transition-duration - How long animation lasts: 0.5s, 200ms, 1s
+    transition-timing-function - Animation curve:
+                         ease (default), linear, ease-in, ease-out, ease-in-out,
+                         cubic-bezier(n,n,n,n), steps(n), step-start, step-end
+    transition-delay   - Delay before animation starts: 0s, 1s, 200ms
+
+  *Shorthand: transition: property duration timing-function delay;
+  *Example: transition: width 0.3s ease-in-out 0.1s, opacity 0.5s linear;
+
+animation              - Creates complex, multi-step moving effects.
+  *Properties:
+    animation-name     - Name of @keyframes rule
+    animation-duration - Total animation time: 1s, 500ms
+    animation-timing-function - Same as transition timing functions
+    animation-delay    - Start delay: 0s, 1s
+    animation-iteration-count - Number of repeats: 1, 3, infinite
+    animation-direction - normal, reverse, alternate, alternate-reverse
+    animation-fill-mode - Styles before/after: none, forwards, backwards, both
+    animation-play-state - running, paused
+
+  *Shorthand: animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+  *Example: animation: slide-in 1s ease-in-out 0s 1 normal forwards;
+
+@keyframes             - Defines animation sequence.
+  *Syntax:
+    @keyframes animation-name {
+      0% { /* starting styles */ }
+      50% { /* midpoint styles */ }
+      100% { /* ending styles */ }
+    }
+    
+    @keyframes slide-in {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+--- CSS: ADVANCED SELECTORS ---
+
+:is()                  - Matches any selector in list (reduces repetition).
+  *Example: 
+    :is(header, footer, section) p { color: blue; }
+    /* Equivalent to: header p, footer p, section p { color: blue; } */
+
+:where()               - Like :is() but with zero specificity.
+  *Example: :where(header, footer) p { color: blue; }
+
+:has()                 - Parent selector (matches parent based on children).
+  *Example: 
+    div:has(p) { border: 1px solid blue; } /* divs that contain p */
+    section:has(.active) { background: yellow; }
+
+:focus-visible         - Styles only when element is focused via keyboard.
+:focus-within          - Styles element when any descendant has focus.
+:target                - Styles element that is the target of URL fragment.
+:checked               - Styles checked radio/checkbox.
+:disabled              - Styles disabled form elements.
+:enabled               - Styles enabled form elements.
+:valid / :invalid      - Styles form elements based on validation.
+:required / :optional  - Styles required/optional form elements.
+:in-range / :out-of-range - Styles number/range inputs based on min/max.
+:read-only / :read-write - Styles based on editability.
+:default               - Styles default option in select or radio group.
+
+--- CSS: ADVANCED TYPOGRAPHY ---
+
+font-display           - Font loading behavior.
+  *Values:
+    auto              - Browser decides (usually similar to block)
+    block             - Hides text until font loads (FOIT)
+    swap              - Shows fallback until font loads (FOUT)
+    fallback          - Short block period, then swap
+    optional          - Like fallback but browser can cancel load
+
+font-feature-settings  - OpenType features.
+  *Examples:
+    "liga" 1          - Enables ligatures
+    "kern" 1          - Enables kerning
+    "smcp" 1          - Enables small caps
+    "tnum" 1          - Tabular numbers
+
+font-kerning           - Kerning control.
+  *Values: auto, normal, none
+
+font-variant           - Font variants.
+  *Values: normal, small-caps, all-small-caps, petite-caps, all-petite-caps, 
+           unicase, titling-caps
+
+font-variant-numeric   - Number styling.
+  *Values: lining-nums, oldstyle-nums, proportional-nums, tabular-nums, 
+           diagonal-fractions, stacked-fractions, ordinal, slashed-zero
+
+text-transform         - Text case transformation.
+  *Values: none, capitalize, uppercase, lowercase, full-width, full-size-kana
+
+text-indent            - First line indentation.
+  *Values: length, percentage, each-line, hanging
+
+text-overflow          - Overflow text handling.
+  *Values: clip (default), ellipsis (...), string ("--")
+  *Requires: overflow: hidden and white-space: nowrap
+
+white-space            - Whitespace handling.
+  *Values:
+    normal           - Collapses whitespace, wraps text (default)
+    nowrap           - Collapses whitespace, no wrapping
+    pre              - Preserves whitespace, no wrapping
+    pre-wrap         - Preserves whitespace, wraps text
+    pre-line         - Collapses whitespace, wraps text
+    break-spaces     - Like pre-wrap but breaks spaces
+
+word-break             - Line breaking behavior.
+  *Values: normal, break-all, keep-all, break-word
+
+word-wrap / overflow-wrap - Word breaking for overflow.
+  *Values: normal, break-word, anywhere
+
+writing-mode           - Text direction and orientation.
+  *Values: horizontal-tb, vertical-rl, vertical-lr, sideways-rl, sideways-lr
+
+text-orientation       - Orientation in vertical writing modes.
+  *Values: mixed, upright, sideways, sideways-right
+
+--- CSS: CUSTOM PROPERTIES (CSS VARIABLES) ---
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --spacing-unit: 1rem;
+  --max-width: 1200px;
+}
+
+.element {
+  color: var(--primary-color);
+  margin: calc(var(--spacing-unit) * 2);
+  width: var(--max-width, 100%); /* fallback value */
+}
+
+:host { /* For web components */
+  --component-color: blue;
+}
+
+@property --custom-property {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: black;
+}
+
+--- CSS: LOGICAL PROPERTIES (RTL & VERTICAL SUPPORT) ---
+
+Instead of physical properties (left/right/top/bottom):
+  *inline-start / inline-end - Start/end in writing direction
+  *block-start / block-end   - Start/end perpendicular to writing direction
+
+Examples:
+  margin-left → margin-inline-start
+  padding-right → padding-inline-end
+  border-top → border-block-start
+  border-bottom → border-block-end
+
+Top/Right/Bottom/Left → Inset:
+  top, right, bottom, left → inset-block-start, inset-inline-end, 
+                           inset-block-end, inset-inline-start
+  Shorthand: inset: top right bottom left;
+
+Width/Height → Inline/Block size:
+  width → inline-size
+  height → block-size
+  min-width → min-inline-size
+  max-height → max-block-size
+
+Text alignment:
+  text-align: left → text-align: start
+  text-align: right → text-align: end
+
+Float:
+  float: left → float: inline-start
+  float: right → float: inline-end
+
+--- CSS: MULTI-COLUMN LAYOUT ---
+
+column-count           - Number of columns.
+  *Values: auto, integer
+
+column-width           - Optimal column width.
+  *Values: auto, length
+
+columns                - Shorthand: column-width column-count
+
+column-gap             - Gap between columns.
+  *Values: normal, length
+
+column-rule            - Line between columns.
+  *Properties: column-rule-width, column-rule-style, column-rule-color
+  *Shorthand: column-rule: width style color;
+
+column-span            - How element spans columns.
+  *Values: none, all
+
+column-fill            - How columns are filled.
+  *Values: auto, balance, balance-all
+
+--- CSS: SCROLL PROPERTIES ---
+
+scroll-behavior        - Smooth scrolling.
+  *Values: auto (instant), smooth (animated)
+
+scroll-margin          - Margin for scroll snap.
+  *Longhands: scroll-margin-top, scroll-margin-right, etc.
+
+scroll-padding         - Padding for scroll snap.
+  *Longhands: scroll-padding-top, scroll-padding-right, etc.
+
+scroll-snap-type       - Scroll snap behavior.
+  *Values: none, x, y, block, inline, both
+  *Optional: mandatory, proximity
+  *Example: scroll-snap-type: y mandatory;
+
+scroll-snap-align      - Snap alignment.
+  *Values: none, start, end, center
+
+scroll-snap-stop       - Scroll snap stopping.
+  *Values: normal, always
+
+overscroll-behavior    - Scroll chaining behavior.
+  *Values: auto, contain, none
+  *Longhands: overscroll-behavior-x, overscroll-behavior-y
+
+scrollbar-color        - Scrollbar colors.
+  *Values: auto, dark, light, color color
+  *Example: scrollbar-color: #888 #f1f1f1;
+
+scrollbar-width        - Scrollbar width.
+  *Values: auto, thin, none
+
+--- CSS: CONTAINMENT ---
+
+container-type         - Creates containment context.
+  *Values: none, size, inline-size, block-size
+
+container-name         - Names container for queries.
+  *Values: none, custom-ident
+
+@container             - Container queries (similar to media queries but for elements).
+
+Example:
+.parent {
+  container-type: inline-size;
+  container-name: sidebar;
+}
+
+@container sidebar (min-width: 400px) {
+  .child { 
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}
+
+@container (width > 600px) {
+  .card { 
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+--- CSS: LAYERED STYLES (CASCADE LAYERS) ---
+
+@layer base, components, utilities;
+
+@layer base {
+  /* Lowest priority - reset styles, defaults */
+  * { margin: 0; padding: 0; }
+  h1 { font-size: 2rem; }
+}
+
+@layer components {
+  /* Middle priority - component styles */
+  .button { padding: 0.5rem 1rem; }
+  .card { border: 1px solid #ccc; }
+}
+
+@layer utilities {
+  /* Highest priority - utility classes */
+  .text-center { text-align: center; }
+  .mt-2 { margin-top: 0.5rem; }
+}
+
+@layer base.reset {
+  /* Nested layer */
+}
+
+Import with layers:
+@import url("theme.css") layer(theme);
+
+--- CSS: SUBGRID ---
+
+display: subgrid       - Allows grid children to align with parent grid tracks.
+  (Part of CSS Grid Level 2)
+
+Example:
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.grid-item {
+  display: grid;
+  grid-template-columns: subgrid; /* Inherits parent's columns */
+  grid-column: span 3;
+}
+
+--- CSS: SCROLL-DRIVEN ANIMATIONS (NEW) ---
+
+animation-timeline     - Links animation to scroll position.
+  *Values: 
+    scroll()           - Scroll progress timeline
+    view()             - View progress timeline
+    auto               - Default timeline
+    none               - No timeline
+
+scroll-timeline        - Defines scroll timeline.
+  *Properties: scroll-timeline-name, scroll-timeline-axis
+
+view-timeline          - Defines view timeline.
+  *Properties: view-timeline-name, view-timeline-axis, view-timeline-inset
+
+Example:
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.element {
+  animation: fadeIn linear;
+  animation-timeline: view();
+  animation-range: contain 0% contain 100%;
+}
+
+.scroll-container {
+  scroll-timeline: --scroll-timeline block;
+}
+
+--- CSS: PREFERS-* MEDIA FEATURES (ACCESSIBILITY) ---
+
+@media (prefers-color-scheme: dark) {
+  /* Dark mode styles */
+  body { background: #121212; color: #fff; }
+}
+
+@media (prefers-color-scheme: light) {
+  /* Light mode styles */
+  body { background: #fff; color: #121212; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Reduce/remove animations */
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  /* High contrast styles */
+  body { color: black; background: white; }
+  a { text-decoration: underline; }
+}
+
+@media (prefers-contrast: more) {
+  /* Even higher contrast */
+}
+
+@media (prefers-contrast: less) {
+  /* Lower contrast */
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  /* Reduce transparency */
+  * { opacity: 1 !important; }
+}
+
+@media (prefers-reduced-data: reduce) {
+  /* Reduce data usage */
+  background-image: none;
+  font-family: system-ui, sans-serif;
+}
+
+--- CSS: MODERN COLOR SPACES ---
+
+oklab() / oklch()      - Perceptually uniform color spaces.
+  *Example: oklch(70% 0.15 145) - Lightness, Chroma, Hue
+
+color()               - Different color spaces.
+  *Example: 
+    color(display-p3 1 0 0) - P3 color space
+    color(srgb 1 0 0) - sRGB color space
+
+color-mix()           - Mixes two colors.
+  *Example: color-mix(in oklch, red 30%, blue 70%)
+
+color-contrast()      - Chooses most contrasting color.
+  *Example: color-contrast(black vs white, gray, red)
+
+--- CSS: VIEW TRANSITIONS API ---
+
+::view-transition-old(root) - Old state snapshot
+::view-transition-new(root) - New state snapshot
+
+@view-transition {
+  navigation: auto;
+}
+
+Example for single-page apps:
+document.startViewTransition(() => {
+  // Update DOM
+});
+
+================================================================================
+                    BROWSER SUPPORT & BEST PRACTICES
+================================================================================
+
+--- CSS: MODERN SELECTORS SUPPORT ---
+
+:has()                - Supported in modern browsers (2022+)
+@container            - Supported in modern browsers (2023+)
+@layer                - Supported in modern browsers (2022+)
+subgrid              - Firefox only (as of 2024)
+scroll-driven animations - Chrome/Edge only (as of 2024)
+
+--- CSS: VENDOR PREFIXES (LEGACY SUPPORT) ---
+
+-webkit-              - Chrome, Safari, newer Edge
+-moz-                 - Firefox
+-ms-                  - Old Internet Explorer/Edge
+-o-                   - Old Opera
+
+Examples:
+-webkit-transition: all 0.3s;
+-moz-transition: all 0.3s;
+-ms-transition: all 0.3s;
+-o-transition: all 0.3s;
+transition: all 0.3s;
+
+--- CSS: FEATURE QUERIES (@supports) ---
+
+@supports (display: grid) {
+  /* CSS for browsers that support grid */
+  .container { display: grid; }
+}
+
+@supports not (display: grid) {
+  /* Fallback for older browsers */
+  .container { display: flex; }
+}
+
+@supports (selector(:has(.child))) {
+  /* CSS for browsers that support :has() */
+}
+
+@supports (background: paint(something)) {
+  /* CSS Houdini support */
+}
+
+--- HTML: BEST PRACTICES ---
+
+1. Semantic HTML over divs
+2. Accessibility (alt text, ARIA labels, keyboard navigation)
+3. Valid HTML (use validator.w3.org)
+4. Mobile-first responsive design
+5. Lazy loading for images/videos
+6. Proper heading hierarchy (h1 > h2 > h3)
+7. Form labels for every input
+8. Table headers for tabular data
+9. Viewport meta tag for mobile
+10. UTF-8 charset declaration
+
+--- CSS: BEST PRACTICES ---
+
+1. Mobile-first media queries
+2. CSS custom properties for theming
+3. BEM or similar naming methodology
+4. Minimal use of !important
+5. Efficient selectors (avoid overly specific)
+6. CSS resets or normalizers
+7. Flexbox/Grid for modern layouts
+8. CSS transitions for smooth interactions
+9. Dark mode support with prefers-color-scheme
+10. Print styles with @media print
+
+--- PERFORMANCE OPTIMIZATION ---
+
+HTML:
+1. Minify HTML
+2. Defer non-critical scripts
+3. Preload critical resources
+4. Image optimization (WebP format)
+5. Lazy loading for below-fold content
+
+CSS:
+1. Minify and compress CSS
+2. Critical CSS in <head>
+3. Remove unused CSS
+4. Use efficient selectors
+5. Reduce CSS blocking time
+6. Use will-change for animations
+7. Containment for performance
+8. Use transform/opacity for animations (GPU accelerated)
+9. Reduce layout thrashing
+10. Use content-visibility for long pages
+
+--- SECURITY BEST PRACTICES ---
+
+HTML:
+1. HTTPS for all resources
+2. Content Security Policy (CSP)
+3. Subresource Integrity (SRI) for CDN resources
+4. Sanitize user input (prevent XSS)
+5. rel="noopener" for external links
+6. Form validation on server-side too
+
+CSS:
+1. Avoid expression() in old IE
+2. Sanitize user-generated CSS
+3. Use safe color contrasts (WCAG)
+4. CSS injection prevention
+5. Secure @import sources
+
+--- ACCESSIBILITY CHECKLIST ---
+
+HTML:
+1. Semantic elements
+2. Alt text for images
+3. ARIA labels when needed
+4. Form field labels
+5. Table headers and captions
+6. Language attribute
+7. Skip navigation links
+8. Sufficient color contrast
+9. Keyboard navigation
+10. Focus indicators
+
+CSS:
+1. Responsive design
+2. Respect user font size preferences
+3. High contrast mode support
+4. Reduced motion support
+5. Focus visible styles
+6. Sufficient tap/click targets
+7. No text in images
+8. Logical tab order
+9. Visible focus states
+10. Screen reader only content
+
+================================================================================
+                    QUICK REFERENCE: COMMON PATTERNS
+================================================================================
+
+--- CENTERING ELEMENTS ---
+
+/* Horizontal center */
+.center-h {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Flexbox center */
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Grid center */
+.center-grid {
+  display: grid;
+  place-items: center;
+}
+
+/* Absolute center */
+.center-abs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+--- RESPONSIVE IMAGES ---
+
+<img src="small.jpg" 
+     srcset="medium.jpg 800w, large.jpg 1200w"
+     sizes="(max-width: 600px) 100vw, 50vw"
+     alt="Description">
+
+<picture>
+  <source media="(min-width: 800px)" srcset="large.jpg">
+  <source media="(min-width: 400px)" srcset="medium.jpg">
+  <img src="small.jpg" alt="Description">
+</picture>
+
+--- CSS GRID COMMON PATTERNS ---
+
+/* 12-column grid */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+/* Masonry layout */
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 1rem;
+}
+
+/* Holy grail layout */
+.holy-grail {
+  display: grid;
+  grid-template: 
+    "header header header" auto
+    "nav main aside" 1fr
+    "footer footer footer" auto
+    / 200px 1fr 200px;
+}
+
+--- FLEXBOX COMMON PATTERNS ---
+
+/* Space-between navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Equal height cards */
+.card-container {
+  display: flex;
+}
+
+.card {
+  flex: 1; /* Equal width */
+}
+
+/* Wrapping items */
+.wrap-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.item {
+  flex: 1 1 200px; /* Grow, shrink, basis */
+}
+
+--- MEDIA QUERY BREAKPOINTS ---
+
+/* Mobile-first approach */
+/* Base styles (mobile) */
+
+/* Tablet */
+@media (min-width: 768px) { /* styles */ }
+
+/* Desktop */
+@media (min-width: 1024px) { /* styles */ }
+
+/* Large desktop */
+@media (min-width: 1280px) { /* styles */ }
+
+/* High-resolution */
+@media (min-resolution: 192dpi) { /* styles */ }
+
+/* Orientation */
+@media (orientation: landscape) { /* styles */ }
