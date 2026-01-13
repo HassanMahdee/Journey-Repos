@@ -192,23 +192,6 @@ column-gap             - Gap between columns in multi-column layout or grid
 :cursor                 - Changes the mouse icon (e.g., to a "hand" pointer)
 :focus                  - Styles an element (like an input) when it's clicked into.
 
---- CSS: SELECTORS (EXPANDED) ---
-Attribute selectors:
-  [attribute]          - Elements with attribute
-    *Example: [disabled] selects all disabled elements
-  [attribute="value"]  - Exact attribute value
-    *Example: [type="email"] selects all email inputs
-  [attribute~="value"] - Attribute contains word (space-separated)
-    *Example: [class~="btn"] selects elements with class containing "btn"
-  [attribute|="value"] - Attribute starts with word or word-
-    *Example: [lang|="en"] selects lang="en" or lang="en-US"
-  [attribute^="value"] - Attribute starts with string
-    *Example: [href^="https"] selects links starting with "https"
-  [attribute$="value"] - Attribute ends with string
-    *Example: [src$=".jpg"] selects images ending with ".jpg"
-  [attribute*="value"] - Attribute contains substring
-    *Example: [href*="example"] selects links containing "example"
-
 Pseudo-classes:
   :first-child         - First child element
   :last-child          - Last child element
