@@ -135,11 +135,6 @@ justify-content        - Main axis alignment: flex-start, flex-end, center, spac
 align-items            - Cross axis alignment: stretch, flex-start, flex-end, center, baseline
 align-content          - Multi-line alignment: flex-start, flex-end, center, space-between, space-around, stretch
 align-self             - Individual item alignment: auto, flex-start, flex-end, center, baseline, stretch
-flex-grow              - Growth factor (0 = no grow, 1 = grows)
-flex-shrink            - Shrink factor (0 = no shrink, 1 = shrinks)
-flex-basis             - Initial size: auto, content, or specific length
-flex                   - Shorthand: flex-grow flex-shrink flex-basis
-order                  - Visual order (integer)
 
 Grid properties:
 grid-template-columns  - Defines column track sizes: none, auto, length, %, fr, min-content, max-content, minmax(), repeat()
@@ -147,11 +142,6 @@ grid-template-columns  - Defines column track sizes: none, auto, length, %, fr, 
 grid-template-rows     - Defines row track sizes (same values as columns)
 grid-template-areas    - Named grid areas using strings
   *Example: grid-template-areas: "header header" "sidebar main" "footer footer";
-grid-template          - Shorthand: rows / columns / areas
-grid-auto-columns      - Size of implicitly created columns
-grid-auto-rows         - Size of implicitly created rows
-grid-auto-flow         - Auto-placement: row, column, dense
-grid                   - Most comprehensive shorthand
 grid-column-start      - Start line for column: line number, span n, auto
 grid-column-end        - End line for column
 grid-row-start         - Start line for row
@@ -166,8 +156,6 @@ align-content         - Vertical alignment of grid tracks (same values as justif
 
 Grid functions:
 *repeat()            - Repeats track pattern: repeat(3, 1fr) = 1fr 1fr 1fr
-*minmax()            - Size range: minmax(200px, 1fr) = minimum 200px, maximum 1fr
-*fit-content()       - Clamps size: fit-content(300px) = auto but max 300px
 
 --- CSS: POSITIONING & LAYOUT ---
 position               - How an element sits in the flow (relative, absolute, fixed, sticky). 
@@ -187,9 +175,9 @@ background-size        - Controls if the image covers the box or fits inside it.
 background-repeat      - Determines if the image tiles/repeats if it's smaller than the box. 
 background-position    - Moves the background image (e.g., center, top-right). 
 background             - Shorthand for all background properties
-*url()               - References external resource for background-image
+*url()                 - References external resource for background-image
   *Example: background-image: url("image.jpg");
-*linear-gradient()   - Linear color gradient for backgrounds
+*linear-gradient()     - Linear color gradient for backgrounds
   *Example: background: linear-gradient(to right, red, blue);
 
 --- CSS: SPECIAL EFFECTS ---
@@ -226,18 +214,11 @@ Pseudo-classes:
   :last-child          - Last child element
   :nth-child(n)        - nth child element (even, odd, 2n, 3n+1)
     *Examples: 
-      :nth-child(2) - Second child
-      :nth-child(odd) - All odd children
-      :nth-child(3n) - Every third child
+      :nth-child(2)    - Second child
+      :nth-child(odd)  - All odd children
+      :nth-child(3n)   - Every third child
       :nth-child(3n+1) - First child of each group of three
   :nth-last-child(n)   - nth child from end
-  :first-of-type       - First of its type among siblings
-  :last-of-type        - Last of its type among siblings
-  :nth-of-type(n)      - nth of its type
-  :only-child          - Element with no siblings
-  :only-of-type        - Only element of its type among siblings
-  :not(selector)       - Negation pseudo-class
-  :empty               - Element with no children
   :root                - Root element of document (<html>)
 
 Pseudo-elements:
@@ -246,19 +227,10 @@ Pseudo-elements:
   ::after              - Inserts content after element (requires 'content' property)
   ::first-line         - Styles first line of text
   ::first-letter       - Styles first letter of text
-  ::selection          - Styles user-selected text
-    *Example: ::selection { background: yellow; }
-  ::placeholder        - Styles placeholder text in inputs
-  ::marker             - Styles list item markers (bullets/numbers)
 
 --- CSS: UNITS & VALUES ---
 Absolute lengths:
   *px                  - Pixels (1/96th of 1in) - Most common for screens
-  *cm                  - Centimeters (1cm = 37.8px)
-  *mm                  - Millimeters (1mm = 3.78px)
-  *in                  - Inches (1in = 96px = 2.54cm)
-  *pt                  - Points (1pt = 1/72 of 1in = 1.33px)
-  *pc                  - Picas (1pc = 12pt = 16px)
 
 Relative lengths:
   *em                  - Relative to element's font-size (1em = current font-size)
@@ -271,27 +243,12 @@ Relative lengths:
   *vmin                - 1% of viewport's smaller dimension
   *vmax                - 1% of viewport's larger dimension
   *ch                  - Width of "0" character in current font
-  *ex                  - Height of "x" character in current font
-
-Angles:
-  *deg                 - Degrees (360deg = full circle)
-  *rad                 - Radians (6.283rad = 360deg)
-  *grad                - Gradians (400grad = 360deg)
-  *turn                - Turns (1turn = 360deg)
-
-Times:
-  *s                   - Seconds
-  *ms                  - Milliseconds (1000ms = 1s)
 
 --- CSS: COLOR FUNCTIONS ---
 *rgb(r, g, b)        - Red, Green, Blue (0-255)
   *Example: rgb(255, 0, 0) = red
 *rgba(r, g, b, a)    - RGB with alpha (opacity 0-1)
   *Example: rgba(255, 0, 0, 0.5) = semi-transparent red
-*hsl(h, s, l)        - Hue (0-360), Saturation % (0-100), Lightness % (0-100)
-  *Example: hsl(0, 100%, 50%) = red
-*hsla(h, s, l, a)    - HSL with alpha (opacity 0-1)
-*hwb(h, w, b)        - Hue, Whiteness %, Blackness %
 *hex                 - #RRGGBB or #RGB (shorthand)
   *Examples: #ff0000 = red, #f00 = red (shorthand), #ff000080 = semi-transparent red
 
@@ -305,16 +262,6 @@ Named colors:
     calc(100% - 20px)
     calc(50vw + 10rem)
     calc(100vh - 80px)
-*min()               - Minimum value from list
-  *Example: width: min(50%, 300px) = width is smaller of 50% or 300px
-*max()               - Maximum value from list
-  *Example: width: max(50%, 300px) = width is larger of 50% or 300px
-*clamp(min, val, max)- Constrains value between min and max
-  *Example: font-size: clamp(1rem, 2.5vw, 2rem) = font between 1rem and 2rem
-*var(--name, fallback)- CSS custom property variable
-  *Example: color: var(--primary-color, blue)
-*attr()              - Gets attribute value from element
-  *Example: content: attr(data-tooltip)
 *url()               - References external resource
   *Example: background-image: url("image.jpg")
 *linear-gradient()   - Linear color gradient
@@ -506,6 +453,92 @@ aria-valuenow          - Current value (number)
 aria-valuetext         - Human-readable alternative to valuenow
 
 --------------------------------------------------------------------------------
+--- CSS: FLEXBOX & GRID (MODERN LAYOUT) ---
+flex-grow              - Growth factor (0 = no grow, 1 = grows)
+flex-shrink            - Shrink factor (0 = no shrink, 1 = shrinks)
+flex-basis             - Initial size: auto, content, or specific length
+flex                   - Shorthand: flex-grow flex-shrink flex-basis
+order                  - Visual order (integer)
+
+Grid properties:
+grid-template          - Shorthand: rows / columns / areas
+grid-auto-columns      - Size of implicitly created columns
+grid-auto-rows         - Size of implicitly created rows
+grid-auto-flow         - Auto-placement: row, column, dense
+grid                   - Most comprehensive shorthand
+
+Grid functions:
+*minmax()            - Size range: minmax(200px, 1fr) = minimum 200px, maximum 1fr
+*fit-content()       - Clamps size: fit-content(300px) = auto but max 300px
+
+--- CSS: SELECTORS (EXPANDED) ---
+Attribute selectors:
+  [attribute]          - Elements with attribute
+    *Example: [disabled] selects all disabled elements
+  [attribute="value"]  - Exact attribute value
+    *Example: [type="email"] selects all email inputs
+  [attribute~="value"] - Attribute contains word (space-separated)
+    *Example: [class~="btn"] selects elements with class containing "btn"
+  [attribute|="value"] - Attribute starts with word or word-
+    *Example: [lang|="en"] selects lang="en" or lang="en-US"
+  [attribute^="value"] - Attribute starts with string
+    *Example: [href^="https"] selects links starting with "https"
+  [attribute$="value"] - Attribute ends with string
+    *Example: [src$=".jpg"] selects images ending with ".jpg"
+  [attribute*="value"] - Attribute contains substring
+    *Example: [href*="example"] selects links containing "example"
+
+ :first-of-type       - First of its type among siblings
+  :last-of-type        - Last of its type among siblings
+  :nth-of-type(n)      - nth of its type
+  :only-child          - Element with no siblings
+  :only-of-type        - Only element of its type among siblings
+  :not(selector)       - Negation pseudo-class
+  :empty               - Element with no children
+
+ ::selection          - Styles user-selected text
+    *Example: ::selection { background: yellow; }
+  ::placeholder        - Styles placeholder text in inputs
+  ::marker             - Styles list item markers (bullets/numbers)
+
+--- CSS: UNITS & VALUES ---
+Absolute lengths:
+  *cm                  - Centimeters (1cm = 37.8px)
+  *mm                  - Millimeters (1mm = 3.78px)
+  *in                  - Inches (1in = 96px = 2.54cm)
+  *pt                  - Points (1pt = 1/72 of 1in = 1.33px)
+  *pc                  - Picas (1pc = 12pt = 16px)
+
+Relative lengths:
+  *ex                  - Height of "x" character in current font
+
+Angles:
+  *deg                 - Degrees (360deg = full circle)
+  *rad                 - Radians (6.283rad = 360deg)
+  *grad                - Gradians (400grad = 360deg)
+  *turn                - Turns (1turn = 360deg)
+
+Times:
+  *s                   - Seconds
+  *ms                  - Milliseconds (1000ms = 1s)
+
+--- CSS: COLOR FUNCTIONS ---
+*hsl(h, s, l)        - Hue (0-360), Saturation % (0-100), Lightness % (0-100)
+  *Example: hsl(0, 100%, 50%) = red
+*hsla(h, s, l, a)    - HSL with alpha (opacity 0-1)
+*hwb(h, w, b)        - Hue, Whiteness %, Blackness %
+
+--- CSS: FUNCTIONS ---
+*min()               - Minimum value from list
+  *Example: width: min(50%, 300px) = width is smaller of 50% or 300px
+*max()               - Maximum value from list
+  *Example: width: max(50%, 300px) = width is larger of 50% or 300px
+*clamp(min, val, max)- Constrains value between min and max
+  *Example: font-size: clamp(1rem, 2.5vw, 2rem) = font between 1rem and 2rem
+*var(--name, fallback)- CSS custom property variable
+  *Example: color: var(--primary-color, blue)
+*attr()              - Gets attribute value from element
+  *Example: content: attr(data-tooltip)
 
 --- CSS: ADVANCED POSITIONING & LAYOUT ---
 
